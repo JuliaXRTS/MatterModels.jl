@@ -22,11 +22,9 @@ jobs:
       fail-fast: false
       matrix:
         version:
-          - "lts"
           - "1"
         os:
           - ubuntu-latest
-
         arch:
           - x64
         allow_failure: [false]
