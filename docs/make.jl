@@ -21,7 +21,7 @@ open(readme_path, "r") do readme_in
     readme_string = replace(readme_string, "[MIT](LICENSE)" => "[MIT]($(license_path))")
     readme_string = replace(readme_string, "(docs/src/90-contributing.md)" => "(90-contributing.md)")
     readme_string = replace(readme_string, "(docs/src/90-contributing.md)" => "(90-contributing.md)")
-    readme_string = replace(readme_string, "(docs/assets/readme_example.png)" => "(assets/readme_example.png)")
+    #readme_string = replace(readme_string, "![](docs/assets/readme_example.png)" => "")
     open(index_path, "w") do readme_out
         write(readme_out, readme_string)
     end

@@ -79,8 +79,6 @@ lines!(ax, ω_arr ./ EF, dsf_values ./ norm)
 display(fig)
 ```
 
-![example](docs/src/assets/readme_example.png)
-
 ## Contributing
 
 Contributions of all kinds are welcome.
