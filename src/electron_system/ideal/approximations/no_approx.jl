@@ -37,6 +37,7 @@ end
 # finite temperature Lindhard, without any further approximation
 
 ## Real part
+# integraion method adopted from Eur. Phys. J. Plus (2016) 131: 114
 
 function _fermi_prime(x, A, B)
     return term =
