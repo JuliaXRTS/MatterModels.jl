@@ -5,7 +5,7 @@ function _non_deg_integal(nu, beta)
     return prefac * dawson(nu * sqrt(beta)) * sqrt(pi)
 end
 
-function _real_lindhard_nonzero_temperature(::NonDegenerated, ombar::T, qbar::T, bbar::T) where {T <: Real}
+function _real_ideal_dynamic_response(::NonDegenerated, ombar::T, qbar::T, bbar::T) where {T <: Real}
     num = _nu_minus(ombar, qbar)
     nup = _nu_plus(ombar, qbar)
 
@@ -14,7 +14,7 @@ function _real_lindhard_nonzero_temperature(::NonDegenerated, ombar::T, qbar::T,
 end
 
 
-function _imag_lindhard_nonzero_temperature(::NonDegenerated, ombar::T, qbar::T, bbar::T) where {T <: Real}
+function _imag_ideal_dynamic_response(::NonDegenerated, ombar::T, qbar::T, bbar::T) where {T <: Real}
     prefac = -pi / (2 * qbar * bbar)
 
     num = _nu_minus(ombar, qbar)

@@ -27,7 +27,7 @@ export AbstractLocalFieldCorrection, NoLocalFieldCorrection
 
 # concrete electron systems
 export IdealElectronSystem
-export AbstractResponseApproximation, NoApprox, NonDegenerated, Degenerated
+export AbstractResponseApproximation, NoApprox, NonDegenerated, Degenerated, ZeroTemperatureApprox
 export response_approximation
 export InteractingElectronSystem
 
@@ -61,6 +61,7 @@ include("electron_system/interface.jl")
 include("electron_system/generic.jl")
 include("electron_system/ideal/approximations/interface.jl")
 include("electron_system/ideal/approximations/no_approx.jl")
+include("electron_system/ideal/approximations/zero_temperature.jl")
 include("electron_system/ideal/approximations/non_degenerated.jl")
 include("electron_system/ideal/approximations/degenerated.jl")
 include("electron_system/ideal/utils.jl")

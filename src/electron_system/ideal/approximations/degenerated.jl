@@ -24,7 +24,7 @@ function _deg_integral(x::Real)
     end
 end
 
-function _real_lindhard_nonzero_temperature(::Degenerated, ombar::T, qbar::T, bbar::T) where {T <: Real}
+function _real_ideal_dynamic_response(::Degenerated, ombar::T, qbar::T, bbar::T) where {T <: Real}
 
     prefac = inv(qbar)
     num = _nu_minus(ombar, qbar)
@@ -42,7 +42,7 @@ function _real_lindhard_nonzero_temperature(::Degenerated, ombar::T, qbar::T, bb
     if ombar < 1.0e-4 * qbar
         # fallback on no-approx
         # TODO: find an improved formula for this case!
-        return _real_lindhard_zero_temperature(NoApprox(), ombar, qbar)
+        return _real_ideal_dynamic_response(NoApprox(), ombar, qbar, bbar)
     end
 
     # general degenerated case
@@ -54,7 +54,7 @@ end
 
 # general degenerated case
 # source: AB84, eq. 26
-function _imag_lindhard_nonzero_temperature(::Degenerated, ombar::T, qbar::T, bbar::T) where {T <: Real}
+function _imag_ideal_dynamic_response(::Degenerated, ombar::T, qbar::T, bbar::T) where {T <: Real}
     prefac = -pi / (2 * qbar * bbar)
 
     num = _nu_minus(ombar, qbar)

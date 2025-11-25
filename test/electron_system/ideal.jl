@@ -43,7 +43,7 @@ APPROXS = (NoApprox(), NonDegenerated(), Degenerated())
     ### Zero temperature
 
     @testset "T = 0.0 eV" begin
-        test_system = IdealElectronSystem{ZeroTemperature}(ne_ccm)
+        test_system = IdealElectronSystem(ne_ccm, ZeroTemperatureApprox())
         test_system_small_finT = IdealElectronSystem(ne_ccm, 1.0e-2 * eps())
 
         @testset "properties" begin
@@ -70,7 +70,7 @@ APPROXS = (NoApprox(), NonDegenerated(), Degenerated())
 
                 @testset "rf sanity check" begin
                     groundtruth_imag_rf =
-                        N0 * ElectronicStructureModels._imag_lindhard_zero_temperature(NoApprox(), om / EF, q / KF)
+                        N0 * ElectronicStructureModels._imag_ideal_dynamic_response(ZeroTemperatureApprox(), om / EF, q / KF, zero(q))
                     @test isapprox(
                         groundtruth_imag_rf,
                         imag_dynamic_response(test_system, (om, q)),
@@ -78,7 +78,7 @@ APPROXS = (NoApprox(), NonDegenerated(), Degenerated())
                     )
 
                     groundtruth_real_rf =
-                        N0 * ElectronicStructureModels._real_lindhard_zero_temperature(NoApprox(), om / EF, q / KF)
+                        N0 * ElectronicStructureModels._real_ideal_dynamic_response(ZeroTemperatureApprox(), om / EF, q / KF, zero(q))
                     @test isapprox(
                         groundtruth_real_rf,
                         real_dynamic_response(test_system, (om, q)),
@@ -142,7 +142,7 @@ APPROXS = (NoApprox(), NonDegenerated(), Degenerated())
                     end
 
                     @testset "rf sanity check" begin
-                        groundtruth_imag_rf = N0 * ElectronicStructureModels._imag_lindhard_nonzero_temperature(
+                        groundtruth_imag_rf = N0 * ElectronicStructureModels._imag_ideal_dynamic_response(
                             approx,
                             om / EF,
                             q / KF,
@@ -154,7 +154,7 @@ APPROXS = (NoApprox(), NonDegenerated(), Degenerated())
                             rtol = RTOL,
                         )
 
-                        groundtruth_real_rf = N0 * ElectronicStructureModels._real_lindhard_nonzero_temperature(
+                        groundtruth_real_rf = N0 * ElectronicStructureModels._real_ideal_dynamic_response(
                             approx,
                             om / EF,
                             q / KF,

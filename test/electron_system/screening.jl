@@ -40,7 +40,7 @@ APPROXS = [NoApprox(), NonDegenerated(), Degenerated()]
     OMS = EF .* (0.0, rand(RNG), 1 + rand(RNG), 2 + rand(RNG), 3 + rand(RNG))
     QS = KF .* (1.0e-2 * rand(RNG), rand(RNG), 2 + rand(RNG), 3 + rand(RNG))
 
-    TEST_SYSTEM_zeroT = IdealElectronSystem{ZeroTemperature}(ne_ccm)
+    TEST_SYSTEM_zeroT = IdealElectronSystem(ne_ccm, ZeroTemperatureApprox())
     TEST_SYSTEMS_finT = [IdealElectronSystem(ne_ccm, T_eV, approx) for T_eV in TEMPS_eV for approx in APPROXS]
     TEST_SYSTEMS = (TEST_SYSTEM_zeroT, TEST_SYSTEMS_finT...)
 
