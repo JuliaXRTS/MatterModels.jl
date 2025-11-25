@@ -45,7 +45,7 @@ SCREENINGS = (NoScreening(), Screening())
 
     @testset "scr = $scr" for scr in SCREENINGS
         @testset "T = 0.0 eV" begin
-            test_proper_system = IdealElectronSystem{ZeroTemperature}(ne_ccm)
+            test_proper_system = IdealElectronSystem(ne_ccm, ZeroTemperatureApprox())
             test_system = InteractingElectronSystem(test_proper_system, scr)
 
             @testset "properties" begin

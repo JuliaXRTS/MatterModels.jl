@@ -10,13 +10,13 @@ function imag_dynamic_response(
 
     if ombar <= zero(ombar)
         if qbar < zero(qbar)
-            return N0 * _imag_ideal_dynamic_response(elsys, approx, -ombar, -qbar)
+            return N0 * _imag_ideal_dynamic_response(approx, -ombar, -qbar, betabar(elsys))
         else
-            return -N0 * _imag_ideal_dynamic_response(elsys, approx, -ombar, qbar)
+            return -N0 * _imag_ideal_dynamic_response(approx, -ombar, qbar, betabar(elsys))
         end
     end
 
-    return N0 * _imag_ideal_dynamic_response(elsys, approx, ombar, qbar)
+    return N0 * _imag_ideal_dynamic_response(approx, ombar, qbar, betabar(elsys))
 end
 
 function real_dynamic_response(
@@ -31,8 +31,8 @@ function real_dynamic_response(
     N0 = KF / (2 * pi^2)
 
     if ombar <= zero(ombar)
-        return N0 * _real_ideal_dynamic_response(elsys, response_approximation(elsys), -ombar, qbar)
+        return N0 * _real_ideal_dynamic_response(response_approximation(elsys), -ombar, qbar, betabar(elsys))
     end
 
-    return N0 * _real_ideal_dynamic_response(elsys, response_approximation(elsys), ombar, qbar)
+    return N0 * _real_ideal_dynamic_response(response_approximation(elsys), ombar, qbar, betabar(elsys))
 end

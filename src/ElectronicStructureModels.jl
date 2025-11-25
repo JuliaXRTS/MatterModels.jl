@@ -2,9 +2,6 @@ module ElectronicStructureModels
 
 hello_world() = "Hello, World!"
 
-# temperature
-export FiniteTemperature, ZeroTemperature
-
 # matter model
 export AbstractMatterModel
 
@@ -27,7 +24,7 @@ export AbstractLocalFieldCorrection, NoLocalFieldCorrection
 
 # concrete electron systems
 export IdealElectronSystem
-export AbstractResponseApproximation, NoApprox, NonDegenerated, Degenerated
+export AbstractResponseApproximation, NoApprox, NonDegenerated, Degenerated, ZeroTemperatureApprox
 export response_approximation
 export InteractingElectronSystem
 
@@ -51,7 +48,6 @@ using SpecialFunctions
 include("utils.jl")
 include("units.jl")
 include("constants.jl")
-include("temperature.jl")
 include("interface.jl")
 include("generic.jl")
 include("lookup.jl")
@@ -61,6 +57,7 @@ include("electron_system/interface.jl")
 include("electron_system/generic.jl")
 include("electron_system/ideal/approximations/interface.jl")
 include("electron_system/ideal/approximations/no_approx.jl")
+include("electron_system/ideal/approximations/zero_temperature.jl")
 include("electron_system/ideal/approximations/non_degenerated.jl")
 include("electron_system/ideal/approximations/degenerated.jl")
 include("electron_system/ideal/utils.jl")
