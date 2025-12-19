@@ -21,7 +21,7 @@ struct CoulombPseudoPotential <: AbstractPseudoPotential end
 # TODO: insert 4pi!
 function _compute(::CoulombPseudoPotential, om_q::NTuple{2, T}) where {T <: Real}
     om, q = om_q
-    return ELEMENTARY_CHARGE_SQUARED / q^2
+    return 4 * pi * ELEMENTARY_CHARGE_SQUARED / q^2
 end
 
 ### screening

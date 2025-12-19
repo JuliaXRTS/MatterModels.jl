@@ -80,7 +80,7 @@ APPROXS = [NoApprox(), NonDegenerated(), Degenerated()]
                     pseudo_potential(scr, (om, q)),
                 )
 
-                @test isapprox(pseudo_potential(scr, (om, q)), ELEMENTARY_CHARGE_SQUARED / q^2)
+                @test isapprox(pseudo_potential(scr, (om, q)), 4 * pi * ELEMENTARY_CHARGE_SQUARED / q^2)
 
                 @test isapprox(local_field_correction(scr, (om, q)), zero(om))
             end
